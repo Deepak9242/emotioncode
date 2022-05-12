@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emotion Api Check</title>
+    <style>
+      #container {
+        height: 400px;
+        width: 400px;
+        border: 1px solid black;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      #controls {
+        margin-top: 10px;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      function update() {
+        let url;
+        fetch("https://deepak-emotion-api.herokuapp.com/")
+          .then((res) => res.json())
+          .then((json) => {
+            console.log(json["image-url"]);
+            let time = new Date().getTime();
+            document.getElementById("image-box").src =
+              json["image-url"] + "?t=" + time;
+            document.getElementById("image-box").style.width = "400px";
+            document.getElementById("image-box").style.height = "400px";
+          });
+      }
+      function update_angry() {
+        let url;
+        fetch("https://deepak-emotion-api.herokuapp.com/angry/")
+          .then((res) => res.json())
+          .then((json) => {
+            console.log(json["image-url"]);
+            let time = new Date().getTime();
+            document.getElementById("image-box").src =
+              json["image-url"] + "?t=" + time;
+            document.getElementById("image-box").style.width = "400px";
+            document.getElementById("image-box").style.height = "400px";
+          });
+      }
+      function update_love() {
+        let url;
+        fetch("https://deepak-emotion-api.herokuapp.com/love/")
+          .then((res) => res.json())
+          .then((json) => {
+            console.log(json["image-url"]);
+            let time = new Date().getTime();
+            document.getElementById("image-box").src =
+              json["image-url"] + "?t=" + time;
+            document.getElementById("image-box").style.width = "400px";
+            document.getElementById("image-box").style.height = "400px";
+          });
+      }
+      function update_surprise() {
+        let url;
+        fetch("https://deepak-emotion-api.herokuapp.com/surprise/")
+          .then((res) => res.json())
+          .then((json) => {
+            console.log(json["image-url"]);
+            let time = new Date().getTime();
+            document.getElementById("image-box").src =
+              json["image-url"] + "?t=" + time;
+            document.getElementById("image-box").style.width = "400px";
+            document.getElementById("image-box").style.height = "400px";
+          });
+      }
+    </script>
+
+    <div id="container">
+      <image id="image-box" src="#" alt="Loading"></image>
+    </div>
+    <div id="controls">
+      <button onclick="javascript:update()">Happy</button>
+      <button onclick="javascript:update_angry()">Angry</button>
+      <button onclick="javascript:update_love()">Love</button>
+      <button onclick="javascript:update_surprise()">Surprise</button>
+    </div>
+  </body>
+</html>
